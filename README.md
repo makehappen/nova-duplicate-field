@@ -15,7 +15,7 @@ Allow users to duplicate a record through the Laravel Nova Admin Panel along wit
 ### Installation
 
 ```
-composer require jackabox/nova-duplicate-field
+composer require makehappen/nova-duplicate-field
 ```
 
 Reference the duplicate field at the top of your Nova resource and then include the necessary code within the fields.

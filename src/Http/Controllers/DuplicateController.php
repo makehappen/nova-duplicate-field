@@ -38,8 +38,14 @@ class DuplicateController extends Controller
             $model->load($request->relations);
 
             foreach ($model->getRelations() as $relation => $items) {
-                // works for hasMany
                 foreach ($items as $item) {
+                    // belongsToMany
+                    if (get_class($newModel->{$relation}()) === 'Illuminate\Database\Eloquent\Relations\BelongsToMany') {
+                        $newModel->{$relation}()->attach($item->id);
+                        continue;
+                    }
+
+                    // hasMany
                     // clean up our models, remove the id and remove the appends
                     unset($item->id);
                     $item->setAppends([]);
